@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   View, Text, StyleSheet, TouchableOpacity,
-  ScrollView, SafeAreaView,
+  ScrollView, SafeAreaView, Image, // 💡 Ditambah komponen Image dekat sini
 } from 'react-native';
 
 const menuItems = [
@@ -18,12 +18,17 @@ export default function HomeScreen({ navigation }) {
     <SafeAreaView style={styles.safe}>
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.logo}>🐸</Text>
+          {/* 💡 Menggantikan emoji katak dengan komponen gambar logo */}
+          <Image 
+            source={require('../assets/SplashScreenSkinThy2-removebg.png')} // Sesuaikan dengan laluan dan nama fail imej anda
+            style={styles.logoImage} 
+            resizeMode="contain"
+          />
           <Text style={styles.brand}>SKINTHY</Text>
           <Text style={styles.tagline}>Stay Skinthy, Feel Minty!</Text>
         </View>
 
-        <Text style={styles.sectionTitle}>What would you like to do?</Text>
+        <Text style={styles.sectionTitle}>    What would you like to do?</Text>
         <View style={styles.grid}>
           {menuItems.map((item) => (
             <TouchableOpacity
@@ -48,12 +53,17 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: '#CFE3CC',
     alignItems: 'center',
-    paddingVertical: 36,
-    borderBottomLeftRadius: 28,
-    borderBottomRightRadius: 28,
-    marginBottom: 24,
+    paddingVertical: 24, // Dikurangkan sikit supaya saiz kad atas seimbang dengan logo
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    marginBottom: 20,
   },
-  logo: { fontSize: 60, marginBottom: 8 },
+  // 💡 Style baru untuk mengawal saiz paparan logo supaya nampak kemas di header
+  logoImage: {
+    width: 110,
+    height: 110,
+    marginBottom: 0,
+  },
   brand: { fontSize: 28, fontWeight: '900', color: '#2d5a27', letterSpacing: 3 },
   tagline: { fontSize: 13, color: '#4a7a44', marginTop: 4 },
   sectionTitle: {
@@ -67,7 +77,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     paddingHorizontal: 12,
-    gap: 12,
+    gap: 10,
     justifyContent: 'center',
   },
   menuCard: {

@@ -42,7 +42,7 @@ export default function SkinTypeScreen({ navigation }) {
           ListHeaderComponent={
             <View style={styles.intro}>
               <Text style={styles.introText}>
-                Tap a skin type to learn more about its characteristics. 👆
+                Tap a skin type to learn more about its characteristics.
               </Text>
             </View>
           }

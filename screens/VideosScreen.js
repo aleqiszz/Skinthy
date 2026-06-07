@@ -7,8 +7,8 @@ import {
 import Header from '../components/Header';
 
 const videos = [
-  { id: '1', title: 'How To Use Face Sunscreen', channel: 'Skin Care 101', url: 'https://www.youtube.com', emoji: '☀️' },
-  { id: '2', title: 'How To Patch Test a Product', channel: 'Beauty Tips', url: 'https://www.youtube.com', emoji: '🧪' },
+  { id: '1', title: 'How To Use Face Sunscreen', channel: 'NEOGEN DermaTV', url: 'https://youtu.be/7rAOLvHX_-8?si=UXRjGlA5lxxA6az8', emoji: '☀️' },
+  { id: '2', title: 'How To Patch Test a Product', channel: 'Cassandra Bankson', url: 'https://youtu.be/9Nka_l4-vcY?si=j_ppMo_1ueckqV_1', emoji: '🧪' },
   { id: '3', title: 'Morning Skincare Routine for Beginners', channel: 'GlowUp', url: 'https://www.youtube.com', emoji: '🌅' },
   { id: '4', title: 'Night Skincare Routine Explained', channel: 'Skin Science', url: 'https://www.youtube.com', emoji: '🌙' },
   { id: '5', title: 'Best Ingredients for Acne-Prone Skin', channel: 'DermTalk', url: 'https://www.youtube.com', emoji: '💊' },
