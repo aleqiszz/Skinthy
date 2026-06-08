@@ -9,10 +9,10 @@ import Header from '../components/Header';
 const videos = [
   { id: '1', title: 'How To Use Face Sunscreen', channel: 'NEOGEN DermaTV', url: 'https://youtu.be/7rAOLvHX_-8?si=UXRjGlA5lxxA6az8', emoji: '☀️' },
   { id: '2', title: 'How To Patch Test a Product', channel: 'Cassandra Bankson', url: 'https://youtu.be/9Nka_l4-vcY?si=j_ppMo_1ueckqV_1', emoji: '🧪' },
-  { id: '3', title: 'Morning Skincare Routine for Beginners', channel: 'GlowUp', url: 'https://www.youtube.com', emoji: '🌅' },
-  { id: '4', title: 'Night Skincare Routine Explained', channel: 'Skin Science', url: 'https://www.youtube.com', emoji: '🌙' },
-  { id: '5', title: 'Best Ingredients for Acne-Prone Skin', channel: 'DermTalk', url: 'https://www.youtube.com', emoji: '💊' },
-  { id: '6', title: 'How to Layer Skincare Products Correctly', channel: 'SkinthyCare', url: 'https://www.youtube.com', emoji: '📚' },
+  { id: '3', title: 'Morning Skincare Routine for Beginners', channel: 'blueyoobin', url: 'https://youtu.be/vYgCCoavJ38?si=-6Tm673IxByzery3', emoji: '🌅' },
+  { id: '4', title: 'Night Skincare Routine Explained', channel: 'Doctor Youn', url: 'https://youtu.be/pwuFbihJkoI?si=0UJbrSVt_LjXolId', emoji: '🌙' },
+  { id: '5', title: 'Best Ingredients for Acne-Prone Skin', channel: 'Cassandra Bankson', url: 'https://youtu.be/EezMccbTYKM?si=bVbA9B9Qdf_8uYiO', emoji: '💊' },
+  { id: '6', title: 'How to Layer Skincare Products Correctly', channel: 'Dr. Sam Ellis', url: 'https://youtu.be/v-lltVXwfkI?si=bVApPOuQoBsFPmDA', emoji: '📚' },
 ];
 
 export default function VideosScreen({ navigation }) {
