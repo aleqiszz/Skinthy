@@ -6,10 +6,12 @@ import {
 } from 'react-native';
 import Header from '../components/Header';
 import { dayTasks, nightTasks } from '../data/skinthyData';
+import { useUser } from '../context/UserContext';
 
 export default function TrackerScreen({ navigation }) {
   const [day, setDay] = useState(dayTasks);
   const [night, setNight] = useState(nightTasks);
+  const { updateTrackerStats } = useUser();
 
   const toggle = (id, isDay) => {
     if (isDay) {
@@ -27,6 +29,9 @@ export default function TrackerScreen({ navigation }) {
     const dayDone = day.filter((t) => t.done).length;
     const nightDone = night.filter((t) => t.done).length;
     const total = dayDone + nightDone;
+
+    // Update context stats
+    updateTrackerStats(total);
 
     Alert.alert(
       total >= 5 ? '🎉 Well Done!' : '📋 Keep It Up!',
@@ -60,12 +65,23 @@ export default function TrackerScreen({ navigation }) {
     </TouchableOpacity>
   );
 
+  const totalDone = day.filter((t) => t.done).length + night.filter((t) => t.done).length;
+  const totalTasks = day.length + night.length;
+
   return (
     <SafeAreaView style={styles.safe}>
       <Header title="Skinthy Tracker" showBack onBack={() => navigation.goBack()} />
 
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.question}>Have you taken care of your skin today?</Text>
+
+        {/* Progress Bar */}
+        <View style={styles.progressContainer}>
+          <View style={styles.progressBar}>
+            <View style={[styles.progressFill, { width: `${(totalDone / totalTasks) * 100}%` }]} />
+          </View>
+          <Text style={styles.progressText}>{totalDone}/{totalTasks} steps completed</Text>
+        </View>
 
         <View style={styles.columnsRow}>
           <View style={styles.column}>
@@ -95,9 +111,30 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     color: '#2d5a27',
     textAlign: 'center',
-    marginBottom: 4,
+    marginBottom: 12,
   },
-  columnsRow: { flexDirection: 'row', gap: 12, marginTop: 16 },
+  progressContainer: {
+    marginBottom: 16,
+    alignItems: 'center',
+  },
+  progressBar: {
+    width: '100%',
+    height: 10,
+    backgroundColor: '#e0e0e0',
+    borderRadius: 5,
+    overflow: 'hidden',
+    marginBottom: 6,
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: '#2d5a27',
+    borderRadius: 5,
+  },
+  progressText: {
+    fontSize: 12,
+    color: '#888',
+  },
+  columnsRow: { flexDirection: 'row', gap: 12, marginTop: 8 },
   column: {
     flex: 1,
     backgroundColor: '#fff',
