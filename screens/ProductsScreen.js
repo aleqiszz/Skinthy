@@ -8,6 +8,7 @@ import Header from '../components/Header';
 import ProductCard from '../components/ProductCard';
 import { products } from '../data/skinthyData';
 import { useUser } from '../context/UserContext';
+import { Platform } from 'react-native';
 
 const SKIN_FILTERS = ['All', 'Normal', 'Dry', 'Oily', 'Combination', 'Sensitive', 'Acne-Prone'];
 
@@ -137,7 +138,7 @@ export default function ProductsScreen({ navigation }) {
 
       {/* SKIN TYPE FILTER CHIPS */}
       <FlatList
-        horizontal
+        horizontal // Horizontal FlatList
         data={SKIN_FILTERS}
         keyExtractor={(item) => item}
         showsHorizontalScrollIndicator={false}
@@ -195,16 +196,17 @@ export default function ProductsScreen({ navigation }) {
 const styles = StyleSheet.create({
   safe: { flex: 1, backgroundColor: '#F0EFE1' },
   headerWrapper: {
-    backgroundColor: '#C2D7C1',
-    paddingTop: 10,
-    paddingBottom: 5,
-  },
+  backgroundColor: '#C2D7C1',
+  paddingTop: Platform.OS === 'android' ? 10 : 20,
+  paddingBottom: 5,
+},
+
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
     marginHorizontal: 16,
-    marginTop: 12,
+    marginTop: Platform.OS === 'ios' ? 16 : 12,
     marginBottom: 4,
     borderRadius: 25,
     paddingHorizontal: 14,
