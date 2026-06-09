@@ -7,13 +7,13 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [skinType, setSkinType] = useState(null);
   const [favourites, setFavourites] = useState([]);
+  const [skinNotes, setSkinNotes] = useState('');
   const [trackerStats, setTrackerStats] = useState({
     todayCompleted: 0,
     streak: 0,
     lastCompleted: null,
   });
 
-  // Toggle favourite product
   const toggleFavourite = (product) => {
     setFavourites((prev) => {
       const exists = prev.find((p) => p.id === product.id);
@@ -25,16 +25,14 @@ export function UserProvider({ children }) {
     });
   };
 
-  // Check sama ada product tu favourite atau tak
   const isFavourite = (productId) => {
     return favourites.some((p) => p.id === productId);
   };
 
-  // Update tracker stats
   const updateTrackerStats = (completedCount) => {
     const today = new Date().toDateString();
     setTrackerStats((prev) => {
-      const isConsecutive = prev.lastCompleted === 
+      const isConsecutive = prev.lastCompleted ===
         new Date(Date.now() - 86400000).toDateString();
       return {
         todayCompleted: completedCount,
@@ -51,6 +49,7 @@ export function UserProvider({ children }) {
       user, setUser,
       skinType, setSkinType,
       favourites, toggleFavourite, isFavourite,
+      skinNotes, setSkinNotes,
       trackerStats, updateTrackerStats,
     }}>
       {children}

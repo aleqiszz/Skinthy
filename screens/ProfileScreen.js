@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import {
   View, Text, StyleSheet, SafeAreaView,
-  TouchableOpacity, Alert, ScrollView, FlatList,
+  TouchableOpacity, Alert, ScrollView, FlatList, TextInput,
 } from 'react-native';
 import Header from '../components/Header';
 import { useUser } from '../context/UserContext';
@@ -15,6 +15,7 @@ export default function ProfileScreen({ navigation }) {
     skinType, setSkinType,
     favourites,
     trackerStats,
+    skinNotes, setSkinNotes,
   } = useUser();
 
   const [showSkinPicker, setShowSkinPicker] = useState(false);
@@ -58,7 +59,7 @@ export default function ProfileScreen({ navigation }) {
           <Text style={styles.userEmail}>{user?.email || ''}</Text>
         </View>
 
-        {/* Skincare Stats — Option A */}
+        {/* Skincare Stats */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>📊 SKINCARE STATS</Text>
           <View style={styles.statsRow}>
@@ -74,7 +75,7 @@ export default function ProfileScreen({ navigation }) {
           </View>
         </View>
 
-        {/* Skin Type Badge — Option B */}
+        {/* Skin Type Badge */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>🏷️ MY SKIN TYPE</Text>
           {skinType ? (
@@ -122,7 +123,7 @@ export default function ProfileScreen({ navigation }) {
           )}
         </View>
 
-        {/* Favourite Products — Option C */}
+        {/* Favourite Products */}
         <View style={styles.card}>
           <Text style={styles.cardTitle}>❤️ FAVOURITE PRODUCTS</Text>
           {favourites.length === 0 ? (
@@ -145,6 +146,26 @@ export default function ProfileScreen({ navigation }) {
               )}
             />
           )}
+        </View>
+
+        {/* Skin Notes — Multiline Input */}
+        <View style={styles.card}>
+          <Text style={styles.cardTitle}>📝 MY SKIN NOTES</Text>
+          <Text style={styles.notesLabel}>
+            Write anything about your skin condition, concerns, or routine tips:
+          </Text>
+          <TextInput
+            style={styles.notesInput}
+            value={skinNotes}
+            onChangeText={setSkinNotes}
+            placeholder="e.g. My skin gets oily in the afternoon. Sensitive to fragrance..."
+            placeholderTextColor="#bbb"
+            multiline
+            numberOfLines={4}
+            maxLength={300}
+            textAlignVertical="top"
+          />
+          <Text style={styles.charCount}>{skinNotes.length}/300</Text>
         </View>
 
         {/* Profile Info */}
@@ -269,6 +290,27 @@ const styles = StyleSheet.create({
   favName: { fontSize: 13, fontWeight: '700', color: '#222' },
   favType: { fontSize: 11, color: '#888', marginTop: 2 },
   favHeart: { fontSize: 18 },
+  notesLabel: {
+    fontSize: 12,
+    color: '#888',
+    marginBottom: 10,
+  },
+  notesInput: {
+    backgroundColor: '#f5f5f5',
+    borderRadius: 12,
+    padding: 12,
+    fontSize: 14,
+    color: '#333',
+    minHeight: 100,
+    borderWidth: 1,
+    borderColor: '#eee',
+  },
+  charCount: {
+    fontSize: 11,
+    color: '#aaa',
+    textAlign: 'right',
+    marginTop: 6,
+  },
   infoRow: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   infoIcon: { fontSize: 24 },
   infoLabel: { fontSize: 11, color: '#999', fontWeight: '600', marginBottom: 2 },
